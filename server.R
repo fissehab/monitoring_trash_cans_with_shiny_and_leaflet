@@ -27,7 +27,7 @@ data_at_start=arrange(data_at_start,-row_number())
 data_at_start=distinct(data_at_start,sensorID,.keep_all = TRUE)
 
 # If the cans are 95% full, change the icons to warning icon
-# If a sensor for any can is not sensing data, change the icon to failed icon
+# If a sensor for any can is not sending data, change the icon to failed icon
 # If it has been more than 10 seconds since any sensor sent data, change the icon to failed
 data_at_start$condition=ifelse(data_at_start$status>0.95,"warning","ok")
 data_at_start$condition[is.na(data_at_start$status)]="failed"
@@ -77,7 +77,7 @@ shinyServer(function(input, output,session) {
  
     last_data=reactive({ # every time there is new data, get the last row for each sensorID
                          # If the cans are 95% full, change the icons to warning icon
-                         # If a sensor for any can is not sensing data, change the icon to failed icon
+                         # If a sensor for any can is not sending data, change the icon to failed icon
                          # If it has been more than 10 seconds since any sensor sent data, change the icon to failed
           dat=sensorData()
           dat=arrange(dat,-row_number())
