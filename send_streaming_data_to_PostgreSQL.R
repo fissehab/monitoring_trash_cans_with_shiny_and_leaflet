@@ -81,7 +81,7 @@ while(i<20){
 # 10 sensors will send data every 2 seconds for 20 seconds
 
 ## Assume the gateway will fail fater 20+20+20 seconds and hence all
-## sensors will not send data all
+## sensors will not send data at all
 
 
 i=0
